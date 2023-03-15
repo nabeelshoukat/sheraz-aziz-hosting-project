@@ -114,7 +114,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-STATIC_ROOT = os.path.join(BASE_DIR, 'Project_management/static', )
+STATIC_ROOT = os.path.join(BASE_DIR, 'Project_management/staticfiles', )
 
 MEDIA_ROOT = '/Project_management/static/media/'
 
