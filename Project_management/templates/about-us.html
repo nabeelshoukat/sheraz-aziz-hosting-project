@@ -1,0 +1,30 @@
+{% extends 'commonfile.html' %}
+{% block content %}
+<!-- ======= About Us Section ======= -->
+<section id="about" class="about">
+    {% for a in about_us %}
+    <div class="container" data-aos="fade-up">
+
+
+        <div class="section-header">
+            <h2>{{ a.name }}</h2>
+            <p>{{ a.short_desc }}</p><br/>
+            <p>{{ a.short_des1 }}</p>
+        </div>
+
+        <div class="row gy-4">
+            <div class="col-lg-6">
+                {{ a.long_description | safe }}
+
+            </div>
+            <div class="col-lg-6">
+                <div class="content ps-0 ps-lg-5">
+                    {{ a.long_description_with_points | safe }}
+                </div>
+            </div>
+        </div>
+
+    </div>
+    {% endfor %}
+</section><!-- End About Us Section -->
+{% endblock content %}

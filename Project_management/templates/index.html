@@ -1,0 +1,166 @@
+{% extends 'commonfile.html' %}
+{% load static %}
+{% block content %}
+
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="hero">
+    <div class="container position-relative">
+        <div class="row gy-5" data-aos="fade-in">
+            <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center text-center text-lg-start">
+                {% for c in home_context %}
+                <h2>Welcome to <span>{{ c.name }}</span></h2>
+                <p> {{ c.short_desc }}.</p>
+                {% endfor %}
+                <div class="d-flex justify-content-center justify-content-lg-start">
+                    <a href="#about" class="btn-get-started">Get Started</a>
+
+                </div>
+            </div>
+            <div class="col-lg-6 order-1 order-lg-2">
+                <img src="assets/img/hero-img.svg" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="100">
+            </div>
+        </div>
+    </div>
+
+<!--    <div class="icon-boxes position-relative">-->
+<!--        <div class="container position-relative">-->
+<!--            <div class="row gy-4 mt-5">-->
+
+<!--                <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">-->
+<!--                    <div class="icon-box">-->
+<!--                        <div class="icon"><i class="bi bi-easel"></i></div>-->
+<!--                        <h4 class="title"><a href="" class="stretched-link">Lorem Ipsum</a></h4>-->
+<!--                    </div>-->
+<!--                </div>&lt;!&ndash;End Icon Box &ndash;&gt;-->
+
+<!--                <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="200">-->
+<!--                    <div class="icon-box">-->
+<!--                        <div class="icon"><i class="bi bi-gem"></i></div>-->
+<!--                        <h4 class="title"><a href="" class="stretched-link">Sed ut perspiciatis</a></h4>-->
+<!--                    </div>-->
+<!--                </div>&lt;!&ndash;End Icon Box &ndash;&gt;-->
+
+<!--                <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="300">-->
+<!--                    <div class="icon-box">-->
+<!--                        <div class="icon"><i class="bi bi-geo-alt"></i></div>-->
+<!--                        <h4 class="title"><a href="" class="stretched-link">Magni Dolores</a></h4>-->
+<!--                    </div>-->
+<!--                </div>&lt;!&ndash;End Icon Box &ndash;&gt;-->
+
+<!--                <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="500">-->
+<!--                    <div class="icon-box">-->
+<!--                        <div class="icon"><i class="bi bi-command"></i></div>-->
+<!--                        <h4 class="title"><a href="" class="stretched-link">Nemo Enim</a></h4>-->
+<!--                    </div>-->
+<!--                </div>&lt;!&ndash;End Icon Box &ndash;&gt;-->
+
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+    </div>
+</section>
+<!-- End Hero Section -->
+
+<main id="main">
+
+    <!-- ======= About Us Section ======= -->
+    <section id="about" class="about">
+        <div class="container">
+
+
+            {% for a in about_us %}
+            <div class="container" data-aos="fade-up">
+
+
+                <div class="section-header">
+                    <h2>{{ a.name }}</h2>
+                    <p>{{ a.short_desc }}</p><br/>
+                    <p>{{ a.short_des1 }}</p>
+                </div>
+
+                <div class="row gy-4">
+                    <div class="col-lg-6">
+                        {{ a.long_description | safe }}
+
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="content ps-0 ps-lg-5">
+                            {{ a.long_description_with_points | safe }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section><!-- End About Us Section -->
+    <section id="services" class="services sections-bg">
+        <div class="container" data-aos="fade-up">
+            {% for service in service_home %}
+            <div class="section-header">
+                <h2>{{ service.name }}</h2>
+                <p>{{ service.description }}</p>
+            </div>
+            {% endfor %}
+
+        </div>
+        <div class="row gy-4 " data-aos="fade-up" data-aos-delay="100">
+            {% for item in service_items %}
+
+            <div class="col-lg-4 col-md-6">
+                <div class="service-item  position-relative">
+
+                    <h3>{{ item.name }}</h3>
+                    <p>{{ item.short_description }}.</p>
+                    <a href="{% url 'services' item.id %}" class="readmore stretched-link">Read more <i
+                            class="bi bi-arrow-right"></i></a>
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+
+    </section>
+
+
+
+    <!-- ======= Our Team Section ======= -->
+    <section id="team" class="team">
+        <div class="container" data-aos="fade-up">
+            {% for t in team_name %}
+
+            <div class="section-header">
+                <h2> {{ t.name }}</h2>
+                <p>{{ t.description }}</p>
+            </div>
+            {% endfor %}
+            {% for member in team_members %}
+            <div class="row gy-4">
+
+                <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+                    <div class="member">
+                        <img src="{{ member.profile_picture.url }}"  width="400" height="100" class="img-fluid" alt="">
+                        <h4>{{ member.name }}</h4>
+                        <span>{{ member.job_title }}</span>
+                        <div class="social">
+                            <a href=" {{ member.twitter }} "><i class="bi bi-twitter"></i></a>
+                            <a href="{{ member.facebook }}"><i class="bi bi-facebook"></i></a>
+                            <a href="{{ member.instagram }}"><i class="bi bi-instagram"></i></a>
+                            <a href="{{ member.linkedin }}"><i class="bi bi-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div><!-- End Team Member -->
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </section><!-- End Our Team Section -->
+
+    <!-- ======= Pricing Section ======= -->
+
+
+    <!-- ======= Contact Section ======= -->
+
+</main><!-- End #main -->
+{% endblock content %}
